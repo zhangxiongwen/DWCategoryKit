@@ -15,5 +15,5 @@ Pod::Spec.new do |s|
   s.source_files = 'Category/**/*.{h,m}'
   s.public_header_files = 'Category/**/*.{h}'
   s.frameworks = "UIKit", "Foundation"
-  s.dependency = "AESCrypt-ObjC", "~> 1.0.2"
+  s.dependency "AESCrypt-ObjC", "~> 1.0.2"
 end
