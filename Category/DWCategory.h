@@ -9,8 +9,6 @@
 #ifndef DWCategory_h
 #define DWCategory_h
 
-#import "AESCrypt.h"
-
 #import "NSString+Extension.h"
 
 #import "UITableView+Extension.h"
