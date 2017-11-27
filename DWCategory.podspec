@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/CoderDwang/DWCategory.git", :tag => s.version.to_s }
   s.source_files = 'Category/**/*.{h,m}'
+  s.public_header_files = 'Category/**/*.{h}'
   s.frameworks = "UIKit", "Foundation"
   s.dependency "AESCrypt-ObjC", "~> 1.0.2"
 end
