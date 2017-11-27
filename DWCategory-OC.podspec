@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 
-  s.name         = "DWCategory"
+  s.name         = "DWCategory-OC"
   s.version      = "0.0.1"
   s.summary      = "项目常用类别整理."
   s.description  = <<-DESC
