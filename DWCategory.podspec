@@ -11,9 +11,9 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = { "Dwang" => "coderdwang@outlook.com" }
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/CoderDwang/DWCategory.git", :tag => "#{s.version}" }
-
-  s.source_files  = "DWCategory", "DWCategory/**/*.{h,m}"
+  s.source       = { :git => "https://github.com/CoderDwang/DWCategory.git", :tag => s.version.to_s }
+  s.source_files = 'Category/**/*.{h,m}'
+  s.public_header_files = 'Category/**/*.{h}'
   s.frameworks = "UIKit", "Foundation"
 
 end
