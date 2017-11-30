@@ -46,4 +46,15 @@
 /** 删除偏好设置存储信息 */
 @property(nonatomic, assign, readonly) BOOL removeUserDefaultsINFO;
 
+/** 时间戳转时间<yyyy-MM-dd hh:mm:ss> */
+@property(nonatomic, copy, readonly) NSString *timeStampYYYYMMDDHHMMSS;
+
+/**
+ 时间戳转时间
+
+ @param type 时间格式
+ @return time
+ */
+- (NSString *)timeStamp:(NSString *)type;
+
 @end

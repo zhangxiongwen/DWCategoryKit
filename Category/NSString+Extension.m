@@ -24,6 +24,7 @@ static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
 @dynamic decryptBase64String;
 @dynamic getUserDefaultsINFO;
 @dynamic removeUserDefaultsINFO;
+@dynamic timeStampYYYYMMDDHHMMSS;
 
 - (NSString *)removeSpace {
     return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -99,6 +100,18 @@ static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
 - (BOOL)removeUserDefaultsINFO {
     [[NSUserDefaults standardUserDefaults] removeObjectForKey:self];
     return [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (NSString *)timeStampYYYYMMDDHHMMSS {
+    return [self timeStamp:@"yyyy-MM-dd hh:mm:ss"];
+}
+
+- (NSString *)timeStamp:(NSString *)type {
+    NSTimeInterval time = [self doubleValue];
+    NSDate *detaildate = [NSDate dateWithTimeIntervalSince1970:time];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:type];
+    return [[dateFormatter stringFromDate:detaildate] copy];
 }
 
 @end
