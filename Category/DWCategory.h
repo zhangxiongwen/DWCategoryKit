@@ -8,6 +8,7 @@
 
 #ifndef DWCategory_h
 #define DWCategory_h
+#ifdef __OBJC__
 
 #import "NSString+Extension.h"
 
@@ -17,4 +18,7 @@
 
 #import "NSMutableArray+Extension.h"
 
+#import "DWOUTPUT.h"
+
+#endif
 #endif /* DWCategory_h */
