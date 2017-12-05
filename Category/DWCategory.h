@@ -20,5 +20,7 @@
 
 #import "DWOUTPUT.h"
 
+#import "DWTools.h"
+
 #endif
 #endif /* DWCategory_h */
