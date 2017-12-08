@@ -27,6 +27,9 @@
 /** 16进制<UIColorHEX(0x1874de)> */
 #define UIColorHEX(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue &0xFF00) >>8))/255.0 blue:((float)(rgbValue &0xFF))/255.0 alpha:1.0]
 
+/** 随机颜色 */
+#define UIRandomColor UIColorWithRGBA(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
 /** 获取当前时间 */
 #define GETCurrentTimeMakeType(type) [DWTools getCurrentTimesWithType:type]
 
