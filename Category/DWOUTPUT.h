@@ -34,7 +34,7 @@
 #define GETCurrentTimeMakeType(type) [DWTools getCurrentTimesWithType:type]
 
 #ifdef DEBUG
-#define NSLog( s, ... ) NSLog( @"\n[所在文件:%@]\n[所在方法:%s]\n[所在行数:%d]\n[打印内容:%@]", NSStringFromClass([self class]), __func__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
+#define NSLog( s, ... ) NSLog( @"\n[所在方法:%s]\n[所在行数:%d]\n[打印内容:%@]", __func__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])
 #else
 #define NSLog(...)
 #endif
