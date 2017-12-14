@@ -7,6 +7,7 @@
 //
 
 #import "NSString+Extension.h"
+#import <UIKit/UIKit.h>
 #import <AESCrypt.h>
 
 static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
@@ -25,6 +26,7 @@ static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
 @dynamic getUserDefaultsINFO;
 @dynamic removeUserDefaultsINFO;
 @dynamic timeStampYYYYMMDDHHMMSS;
+@dynamic callPhone;
 
 - (NSString *)removeSpace {
     return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -94,12 +96,14 @@ static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
 }
 
 - (id)getUserDefaultsINFO {
-   return [[NSUserDefaults standardUserDefaults] objectForKey:self];
+    return [[NSUserDefaults standardUserDefaults] objectForKey:self];
 }
 
-- (BOOL)removeUserDefaultsINFO {
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:self];
-    return [[NSUserDefaults standardUserDefaults] synchronize];
+- (void)setRemoveUserDefaultsINFO:(BOOL)removeUserDefaultsINFO {
+    if (removeUserDefaultsINFO) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:self];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 - (NSString *)timeStampYYYYMMDDHHMMSS {
@@ -114,4 +118,13 @@ static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
     return [[dateFormatter stringFromDate:detaildate] copy];
 }
 
+- (void)setCallPhone:(BOOL)callPhone {
+    if (callPhone) {
+        if (self.isMobNumber) {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", self]]];
+        }
+    }
+}
+
 @end
+

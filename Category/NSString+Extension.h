@@ -28,6 +28,9 @@
 /** 是否为邮箱地址 */
 @property(nonatomic, assign, readonly) BOOL isEMail;
 
+/** 拨打电话 */
+@property(nonatomic, assign) BOOL callPhone;
+
 /** AES加密 */
 @property(nonatomic, copy, readonly) NSString *encryptAESString;
 
@@ -44,17 +47,18 @@
 @property(nonatomic, assign, readonly) id getUserDefaultsINFO;
 
 /** 删除偏好设置存储信息 */
-@property(nonatomic, assign, readonly) BOOL removeUserDefaultsINFO;
+@property(nonatomic, assign) BOOL removeUserDefaultsINFO;
 
 /** 时间戳转时间<yyyy-MM-dd hh:mm:ss> */
 @property(nonatomic, copy, readonly) NSString *timeStampYYYYMMDDHHMMSS;
 
 /**
  时间戳转时间
-
+ 
  @param type 时间格式
  @return time
  */
 - (NSString *)timeStamp:(NSString *)type;
 
 @end
+
