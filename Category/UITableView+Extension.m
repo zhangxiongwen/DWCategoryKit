@@ -27,6 +27,9 @@
 /** 使用默认字体, 提供显示文字字体, 可不提供, 默认为系统字体、字号17 */
 - (UIFont *)cd_noDataViewMessageFont;
 
+/** 出现数据时会走此代理 */
+- (void)cd_hasData;
+
 @end
 
 @implementation UITableView (Extension)
@@ -58,6 +61,9 @@
 - (void)cd_hasData:(BOOL)hasData {
     if (hasData) {
         self.backgroundView = nil;
+        if ([self.delegate respondsToSelector:@selector(cd_hasData)]) {
+            [self.delegate performSelector:@selector(cd_hasData)];
+        }
         return;
     }
     self.tableFooterView = [UIView new];
