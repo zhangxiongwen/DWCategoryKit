@@ -30,8 +30,15 @@
 /** 随机颜色 */
 #define UIRandomColor UIColorWithRGBA(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
-/** 获取当前时间 */
-#define GETCurrentTimeMakeType(type) [DWTools getCurrentTimesWithType:type]
+/** weakSelf */
+#define weakSelf(obj)  __weak typeof(obj) weak##obj = obj;
+
+/** strongSelf */
+#define strongSelf(obj)  __strong typeof(obj) strong##obj = weak##obj;
+
+/** 截取view生成一张图片 */
+#define ShotView(view) 
+
 
 #ifdef DEBUG
 #define NSLog( s, ... ) NSLog( @"\n[所在方法:%s]\n[所在行数:%d]\n[打印内容:%@]", __func__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])

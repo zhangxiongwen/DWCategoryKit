@@ -8,13 +8,12 @@
 
 #import "NSString+Extension.h"
 #import <UIKit/UIKit.h>
-#import <AESCrypt.h>
+//#import <AESCrypt.h>
+#import <CommonCrypto/CommonDigest.h>
 
 static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
 
 @implementation NSString (Extension)
-@dynamic removeSpace;
-@dynamic removeline;
 @dynamic isMobNumber;
 @dynamic isUrllink;
 @dynamic isIDCard;
@@ -25,16 +24,8 @@ static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
 @dynamic decryptBase64String;
 @dynamic getUserDefaultsINFO;
 @dynamic removeUserDefaultsINFO;
-@dynamic timeStampYYYYMMDDHHMMSS;
 @dynamic callPhone;
-
-- (NSString *)removeSpace {
-    return [self stringByReplacingOccurrencesOfString:@" " withString:@""];
-}
-
-- (NSString *)removeline {
-    return [self stringByReplacingOccurrencesOfString:@"-" withString:@""];
-}
+@dynamic md5String;
 
 - (BOOL)isMobNumber {
     NSString * MOBIL = @"^1(3[0-9]|5[0-35-9]|8[025-9])\\d{8}$";
@@ -78,11 +69,13 @@ static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
 }
 
 - (NSString *)encryptAESString {
-    return [AESCrypt encrypt:self password:kAESPassword];
+    return @"";
+//    return [AESCrypt encrypt:self password:kAESPassword];
 }
 
 - (NSString *)decryptAESString {
-    return [AESCrypt decrypt:self password:kAESPassword];
+    return @"";
+//    return [AESCrypt decrypt:self password:kAESPassword];
 }
 
 - (NSString *)encryptBase64String {
@@ -106,24 +99,23 @@ static NSString *const kAESPassword = @"NSString+Extension&CderDwang";
     }
 }
 
-- (NSString *)timeStampYYYYMMDDHHMMSS {
-    return [self timeStamp:@"yyyy-MM-dd hh:mm:ss"];
-}
-
-- (NSString *)timeStamp:(NSString *)type {
-    NSTimeInterval time = [self doubleValue];
-    NSDate *detaildate = [NSDate dateWithTimeIntervalSince1970:time];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:type];
-    return [[dateFormatter stringFromDate:detaildate] copy];
-}
-
 - (void)setCallPhone:(BOOL)callPhone {
     if (callPhone) {
         if (self.isMobNumber) {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel:%@", self]]];
         }
     }
+}
+
+- (NSString *)md5String {
+    const char *cStr = [self UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), digest);
+    NSMutableString *strOutput = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
+    for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [strOutput appendFormat:@"%02x", digest[i]];
+    }
+    return  strOutput;
 }
 
 @end

@@ -1,12 +1,12 @@
 //
-//  UITableView+Placeholder.m
-//  TableViewPlaceholder
+//  UICollectionView+Extension.m
+//  test
 //
-//  Created by Dwang on 2017/10/16.
-//  Copyright © 2017年 Dwang. All rights reserved.
+//  Created by Dwang on 2018/1/10.
+//  Copyright © 2018年 CoderDwang. All rights reserved.
 //
 
-#import "UITableView+Extension.h"
+#import "UICollectionView+Extension.h"
 #import <objc/runtime.h>
 
 @protocol CDTableViewDelegat <NSObject>
@@ -32,7 +32,7 @@
 
 @end
 
-@implementation UITableView (Extension)
+@implementation UICollectionView (Extension)
 
 + (void)load {
     static dispatch_once_t onceToken;
@@ -46,15 +46,14 @@
 - (void)cd_reloadData {
     [self cd_reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
-        NSInteger numberOfSections = [self numberOfSections];
+        NSInteger numberOfSection = [self numberOfSections];
         BOOL hasData = NO;
-        for (int i = 0; i < numberOfSections; i ++) {
-            if ([self numberOfRowsInSection:i]) {
+        for (int i = 0; i < numberOfSection; i ++) {
+            if ([self numberOfItemsInSection:i]) {
                 hasData = YES;
                 break;
             }
         }
-        [self cd_hasData:hasData];
     });
 }
 
@@ -66,7 +65,6 @@
         }
         return;
     }
-    self.tableFooterView = [UIView new];
     if ([self.delegate respondsToSelector:@selector(cd_noDataView)]) {
         self.backgroundView = [self.delegate performSelector:@selector(cd_noDataView)];
         return;
@@ -89,9 +87,9 @@
         msgFont = [self.delegate performSelector:@selector(cd_noDataViewMessageFont)];
     }
     if (img) {
-       self.backgroundView = [self cd_defaultNoDataViewWithImage:img message:msg msgColor:msgColor msgFont:msgFont];
+        self.backgroundView = [self cd_defaultNoDataViewWithImage:img message:msg msgColor:msgColor msgFont:msgFont];
     }else {
-       self.backgroundView = [self cd_defaultNoDataViewWithMessage:msg msgColor:msgColor msgFont:msgFont];
+        self.backgroundView = [self cd_defaultNoDataViewWithMessage:msg msgColor:msgColor msgFont:msgFont];
     }
 }
 

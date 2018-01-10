@@ -10,12 +10,6 @@
 
 @interface NSString (Extension)
 
-/** 格式化字符串，去除@" " */
-@property(nonatomic, copy, readonly) NSString *removeSpace;
-
-/** 格式化字符串，去除@"-" */
-@property(nonatomic, copy, readonly) NSString *removeline;
-
 /** 是否为手机号 */
 @property(nonatomic, assign, readonly) BOOL isMobNumber;
 
@@ -43,22 +37,14 @@
 /** 将Base64编码还原 */
 @property(nonatomic, copy, readonly) NSString *decryptBase64String;
 
+/** md5加密 */
+@property(nonatomic, copy, readonly) NSString *md5String;
+
 /** 获取偏好设置存储信息 */
 @property(nonatomic, assign, readonly) id getUserDefaultsINFO;
 
 /** 删除偏好设置存储信息 */
 @property(nonatomic, assign) BOOL removeUserDefaultsINFO;
-
-/** 时间戳转时间<yyyy-MM-dd hh:mm:ss> */
-@property(nonatomic, copy, readonly) NSString *timeStampYYYYMMDDHHMMSS;
-
-/**
- 时间戳转时间
- 
- @param type 时间格式
- @return time
- */
-- (NSString *)timeStamp:(NSString *)type;
 
 @end
 
