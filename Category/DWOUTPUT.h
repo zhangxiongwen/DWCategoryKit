@@ -31,10 +31,10 @@
 #define UIRandomColor UIColorWithRGBA(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
 /** weakSelf */
-#define weakSelf(obj)  __weak typeof(obj) weak##obj = obj;
+#define weakOBJ(obj)  __weak typeof(obj) weak_##obj = obj;
 
 /** strongSelf */
-#define strongSelf(obj)  __strong typeof(obj) strong##obj = weak##obj;
+#define strongOBJ(obj)  __strong typeof(obj) strong_##obj = weak##obj;
 
 
 #ifdef DEBUG
