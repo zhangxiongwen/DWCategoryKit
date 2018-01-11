@@ -9,7 +9,7 @@
 #import "UICollectionView+Extension.h"
 #import <objc/runtime.h>
 
-@protocol CDTableViewDelegat <NSObject>
+@protocol CDCollectionViewDelegat <NSObject>
 @optional
 
 /** 完全自定义占位图 */
@@ -54,6 +54,7 @@
                 break;
             }
         }
+        [self cd_hasData:hasData];
     });
 }
 
