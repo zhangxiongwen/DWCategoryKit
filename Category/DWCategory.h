@@ -25,6 +25,10 @@
 
 #import "DWOUTPUT.h"
 
+#import "UIView+Extension.h"
+
+#import "UIImage+Extenison.h"
+
 #endif
 
 #endif /* DWCategory_h */

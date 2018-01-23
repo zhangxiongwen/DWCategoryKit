@@ -22,39 +22,5 @@
     return image;
 }
 
-+ (UIImage *)shotScreen {
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    UIGraphicsBeginImageContext(window.bounds.size);
-    [window.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-+ (UIImage *)shotWithView:(UIView *)view {
-    UIGraphicsBeginImageContext(view.bounds.size);
-    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return image;
-}
-
-+ (UIImage *)shotWithView:(UIView *)view scope:(CGRect)scope {
-    CGImageRef imageRef = CGImageCreateWithImageInRect([self shotWithView:view].CGImage, scope);
-    UIGraphicsBeginImageContext(scope.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect rect = CGRectMake(0, 0, scope.size.width, scope.size.height);
-    CGContextTranslateCTM(context, 0, rect.size.height);
-    CGContextScaleCTM(context, 1.0f, -1.0f);
-    CGContextDrawImage(context, rect, imageRef);
-    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    CGImageRelease(imageRef);
-    CGContextRelease(context);
-    return image;
-}
-
-
-
 @end
 

@@ -12,6 +12,12 @@
 /** 持久化对象 */
 #define selfClass(class) self.class = class
 
+/** NSUserDefaults */
+#define UserDefaults [NSUserDefaults standardUserDefaults]
+
+/** 设置图片 */
+#define UIImageName(imgName) [UIImage imageNamed:imgName]
+
 /** 设置字体尺寸 */
 #define UIFontSizeMake(fontSize) [UIFont systemFontOfSize:fontSize]
 

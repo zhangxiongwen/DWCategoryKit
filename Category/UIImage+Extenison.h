@@ -13,13 +13,4 @@
 /** 生成圆角 */
 - (UIImage *)imageWithCornerRadius:(CGFloat)radius;
 
-/** 截取全屏 */
-+ (UIImage *)shotScreen;
-
-/** 截取某个view */
-+ (UIImage *)shotWithView:(UIView *)view;
-
-/** 截图某个view的某块区域 */
-+ (UIImage *)shotWithView:(UIView *)view scope:(CGRect)scope;
-
 @end

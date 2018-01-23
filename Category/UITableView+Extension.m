@@ -40,7 +40,20 @@
         Method sysMethod = class_getInstanceMethod(self, @selector(reloadData));
         Method cd_Method = class_getInstanceMethod(self, @selector(cd_reloadData));
         method_exchangeImplementations(sysMethod, cd_Method);
+        Method sys_init = class_getInstanceMethod(self, @selector(initWithFrame:style:));
+        Method cd_init = class_getInstanceMethod(self, @selector(cd_initWithFrame:style:));
+        method_exchangeImplementations(sys_init, cd_init);
     });
+}
+
+- (id)cd_initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
+    UITableView *tableView = [self cd_initWithFrame:frame style:style];
+    [self loadView];
+    return tableView;
+}
+
+- (void)loadView {
+    
 }
 
 - (void)cd_reloadData {

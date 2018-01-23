@@ -40,7 +40,20 @@
         Method sysMethod = class_getInstanceMethod(self, @selector(reloadData));
         Method cd_Method = class_getInstanceMethod(self, @selector(cd_reloadData));
         method_exchangeImplementations(sysMethod, cd_Method);
+        Method sys_init = class_getInstanceMethod(self, @selector(initWithFrame:collectionViewLayout:));
+        Method cd_init = class_getInstanceMethod(self, @selector(cd_initWithFrame:collectionViewLayout:));
+        method_exchangeImplementations(sys_init, cd_init);
     });
+}
+
+- (id)cd_initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
+    UICollectionView *collectionView = [self cd_initWithFrame:frame collectionViewLayout:layout];
+    [self loadView];
+    return collectionView;
+}
+
+- (void)loadView {
+    
 }
 
 - (void)cd_reloadData {
