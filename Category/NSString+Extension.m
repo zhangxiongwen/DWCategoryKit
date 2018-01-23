@@ -8,7 +8,7 @@
 
 #import "NSString+Extension.h"
 #import <UIKit/UIKit.h>
-//#import <AESCrypt.h>
+#import <AESCrypt.h>
 #import <CommonCrypto/CommonDigest.h>
 
 static NSString *const kAESPassword = @"NSString+Extension&CoderDwang";
@@ -69,13 +69,11 @@ static NSString *const kAESPassword = @"NSString+Extension&CoderDwang";
 }
 
 - (NSString *)encryptAESString {
-    return @"";
-//    return [AESCrypt encrypt:self password:kAESPassword];
+    return [AESCrypt encrypt:self password:kAESPassword];
 }
 
 - (NSString *)decryptAESString {
-    return @"";
-//    return [AESCrypt decrypt:self password:kAESPassword];
+    return [AESCrypt decrypt:self password:kAESPassword];
 }
 
 - (NSString *)encryptBase64String {
