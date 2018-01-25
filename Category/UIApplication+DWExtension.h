@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIApplication (Extension)
+@interface UIApplication (DWExtension)
 
 /** 截取全屏 */
 + (UIImage *)shotScreen;

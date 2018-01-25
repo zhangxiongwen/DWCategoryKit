@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UITableView (Extension)
+@interface UITableView (DWExtension)
 
 @end
 

@@ -1,0 +1,16 @@
+//
+//  UIViewController+DWExtension.h
+//  test
+//
+//  Created by Dwang on 2018/1/24.
+//  Copyright © 2018年 CoderDwang. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface UIViewController (DWExtension)
+
+/** 使用baseView替换系统view */
+@property(nonatomic, strong) UIScrollView *baseView;
+
+@end

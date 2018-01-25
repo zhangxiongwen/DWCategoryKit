@@ -6,14 +6,14 @@
 //  Copyright © 2017年 dwang. All rights reserved.
 //
 
-#import "NSString+Extension.h"
+#import "NSString+DWExtension.h"
 #import <UIKit/UIKit.h>
 #import <AESCrypt.h>
 #import <CommonCrypto/CommonDigest.h>
 
 static NSString *const kAESPassword = @"NSString+Extension&CoderDwang";
 
-@implementation NSString (Extension)
+@implementation NSString (DWExtension)
 @dynamic isMobNumber;
 @dynamic isUrllink;
 @dynamic isIDCard;

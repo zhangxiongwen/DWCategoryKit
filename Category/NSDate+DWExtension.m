@@ -6,9 +6,9 @@
 //  Copyright © 2018年 CoderDwang. All rights reserved.
 //
 
-#import "NSDate+Extension.h"
+#import "NSDate+DWExtension.h"
 
-@implementation NSDate (Extension)
+@implementation NSDate (DWExtension)
 
 + (NSString *)currentTimeWithFormat:(NSString *)format {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

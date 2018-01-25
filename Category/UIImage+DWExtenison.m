@@ -6,9 +6,9 @@
 //  Copyright © 2018年 CoderDwang. All rights reserved.
 //
 
-#import "UIImage+Extenison.h"
+#import "UIImage+DWExtenison.h"
 
-@implementation UIImage (Extenison)
+@implementation UIImage (DWExtension)
 
 - (UIImage *)imageWithCornerRadius:(CGFloat)radius {
     CGRect rect = (CGRect){0.f, 0.f, self.size};

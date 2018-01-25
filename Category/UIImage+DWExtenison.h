@@ -1,5 +1,5 @@
 //
-//  UICollectionView+Extension.h
+//  UIImage+Extenison.h
 //  test
 //
 //  Created by Dwang on 2018/1/10.
@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UICollectionView (Extension)
+@interface UIImage (DWExtension)
+
+/** 生成圆角 */
+- (UIImage *)imageWithCornerRadius:(CGFloat)radius;
 
 @end

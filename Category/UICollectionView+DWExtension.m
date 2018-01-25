@@ -6,48 +6,48 @@
 //  Copyright © 2018年 CoderDwang. All rights reserved.
 //
 
-#import "UICollectionView+Extension.h"
+#import "UICollectionView+DWExtension.h"
 #import <objc/runtime.h>
 
-@protocol CDCollectionViewDelegat <NSObject>
+@protocol DWCollectionViewDelegat <NSObject>
 @optional
 
 /** 完全自定义占位图 */
-- (UIView *)cd_noDataView;
+- (UIView *)dw_noDataView;
 
 /** 使用默认占位图, 提供一张图片, 可不提供, 默认不显示 */
-- (UIImage *)cd_noDataViewImage;
+- (UIImage *)dw_noDataViewImage;
 
 /** 使用默认占位图, 提供显示文字, 可不提供, 默认为暂无数据 */
-- (NSString *)cd_noDataViewMessage;
+- (NSString *)dw_noDataViewMessage;
 
 /** 使用默认占位图, 提供显示文字颜色, 可不提供, 默认为灰色 */
-- (UIColor *)cd_noDataViewMessageColor;
+- (UIColor *)dw_noDataViewMessageColor;
 
 /** 使用默认字体, 提供显示文字字体, 可不提供, 默认为系统字体、字号17 */
-- (UIFont *)cd_noDataViewMessageFont;
+- (UIFont *)dw_noDataViewMessageFont;
 
 /** 出现数据时会走此代理 */
-- (void)cd_hasData;
+- (void)dw_hasData;
 
 @end
 
-@implementation UICollectionView (Extension)
+@implementation UICollectionView (DWExtension)
 
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Method sysMethod = class_getInstanceMethod(self, @selector(reloadData));
-        Method cd_Method = class_getInstanceMethod(self, @selector(cd_reloadData));
-        method_exchangeImplementations(sysMethod, cd_Method);
+        Method dw_Method = class_getInstanceMethod(self, @selector(dw_reloadData));
+        method_exchangeImplementations(sysMethod, dw_Method);
         Method sys_init = class_getInstanceMethod(self, @selector(initWithFrame:collectionViewLayout:));
-        Method cd_init = class_getInstanceMethod(self, @selector(cd_initWithFrame:collectionViewLayout:));
-        method_exchangeImplementations(sys_init, cd_init);
+        Method dw_init = class_getInstanceMethod(self, @selector(dw_initWithFrame:collectionViewLayout:));
+        method_exchangeImplementations(sys_init, dw_init);
     });
 }
 
-- (id)cd_initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
-    UICollectionView *collectionView = [self cd_initWithFrame:frame collectionViewLayout:layout];
+- (id)dw_initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
+    UICollectionView *collectionView = [self dw_initWithFrame:frame collectionViewLayout:layout];
     [self loadView];
     return collectionView;
 }
@@ -56,8 +56,8 @@
     
 }
 
-- (void)cd_reloadData {
-    [self cd_reloadData];
+- (void)dw_reloadData {
+    [self dw_reloadData];
     dispatch_async(dispatch_get_main_queue(), ^{
         NSInteger numberOfSection = [self numberOfSections];
         BOOL hasData = NO;
@@ -67,20 +67,20 @@
                 break;
             }
         }
-        [self cd_hasData:hasData];
+        [self dw_hasData:hasData];
     });
 }
 
-- (void)cd_hasData:(BOOL)hasData {
+- (void)dw_hasData:(BOOL)hasData {
     if (hasData) {
         self.backgroundView = nil;
-        if ([self.delegate respondsToSelector:@selector(cd_hasData)]) {
-            [self.delegate performSelector:@selector(cd_hasData)];
+        if ([self.delegate respondsToSelector:@selector(dw_hasData)]) {
+            [self.delegate performSelector:@selector(dw_hasData)];
         }
         return;
     }
-    if ([self.delegate respondsToSelector:@selector(cd_noDataView)]) {
-        self.backgroundView = [self.delegate performSelector:@selector(cd_noDataView)];
+    if ([self.delegate respondsToSelector:@selector(dw_noDataView)]) {
+        self.backgroundView = [self.delegate performSelector:@selector(dw_noDataView)];
         return;
     }
     
@@ -88,26 +88,26 @@
     NSString *msg = @"暂无数据";
     UIColor *msgColor = [UIColor lightGrayColor];
     UIFont *msgFont = [UIFont systemFontOfSize:17];
-    if ([self.delegate respondsToSelector:@selector(cd_noDataViewImage)]) {
-        img = [self.delegate performSelector:@selector(cd_noDataViewImage)];
+    if ([self.delegate respondsToSelector:@selector(dw_noDataViewImage)]) {
+        img = [self.delegate performSelector:@selector(dw_noDataViewImage)];
     }
-    if ([self.delegate respondsToSelector:@selector(cd_noDataViewMessage)]) {
-        msg = [self.delegate performSelector:@selector(cd_noDataViewMessage)];
+    if ([self.delegate respondsToSelector:@selector(dw_noDataViewMessage)]) {
+        msg = [self.delegate performSelector:@selector(dw_noDataViewMessage)];
     }
-    if ([self.delegate respondsToSelector:@selector(cd_noDataViewMessageColor)]) {
-        msgColor = [self.delegate performSelector:@selector(cd_noDataViewMessageColor)];
+    if ([self.delegate respondsToSelector:@selector(dw_noDataViewMessageColor)]) {
+        msgColor = [self.delegate performSelector:@selector(dw_noDataViewMessageColor)];
     }
-    if ([self.delegate respondsToSelector:@selector(cd_noDataViewMessageFont)]) {
-        msgFont = [self.delegate performSelector:@selector(cd_noDataViewMessageFont)];
+    if ([self.delegate respondsToSelector:@selector(dw_noDataViewMessageFont)]) {
+        msgFont = [self.delegate performSelector:@selector(dw_noDataViewMessageFont)];
     }
     if (img) {
-        self.backgroundView = [self cd_defaultNoDataViewWithImage:img message:msg msgColor:msgColor msgFont:msgFont];
+        self.backgroundView = [self dw_defaultNoDataViewWithImage:img message:msg msgColor:msgColor msgFont:msgFont];
     }else {
-        self.backgroundView = [self cd_defaultNoDataViewWithMessage:msg msgColor:msgColor msgFont:msgFont];
+        self.backgroundView = [self dw_defaultNoDataViewWithMessage:msg msgColor:msgColor msgFont:msgFont];
     }
 }
 
-- (UIView *)cd_defaultNoDataViewWithMessage:(NSString *)message msgColor:(UIColor *)msgColor msgFont:(UIFont *)msgFont {
+- (UIView *)dw_defaultNoDataViewWithMessage:(NSString *)message msgColor:(UIColor *)msgColor msgFont:(UIFont *)msgFont {
     UILabel *lab = [[UILabel alloc] init];
     lab.text = message;
     lab.textColor = msgColor;
@@ -117,7 +117,7 @@
     return lab;
 }
 
-- (UIView *)cd_defaultNoDataViewWithImage:(UIImage *)image message:(NSString *)message msgColor:(UIColor *)msgColor msgFont:(UIFont *)msgFont {
+- (UIView *)dw_defaultNoDataViewWithImage:(UIImage *)image message:(NSString *)message msgColor:(UIColor *)msgColor msgFont:(UIFont *)msgFont {
     CGFloat cX = self.bounds.size.width/2;
     CGFloat cY = self.bounds.size.height * (1 - 0.618);
     CGFloat iW = image.size.width;

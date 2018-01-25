@@ -6,7 +6,7 @@
 //  Copyright © 2018年 CoderDwang. All rights reserved.
 //
 
-#import "UIApplication+Extension.h"
+#import "UIApplication+DWExtension.h"
 
 @implementation UIApplication (Extension)
 

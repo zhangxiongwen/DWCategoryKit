@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UIView (Extension)
+@interface UIView (DWExtension)
 
 /** 截取某个view */
 - (UIImage *)shotView;

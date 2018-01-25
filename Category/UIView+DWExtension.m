@@ -6,22 +6,22 @@
 //  Copyright © 2018年 CoderDwang. All rights reserved.
 //
 
-#import "UIView+Extension.h"
+#import "UIView+DWExtension.h"
 #import <objc/runtime.h>
 
-@implementation UIView (Extension)
+@implementation UIView (DWExtension)
 
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Method sysMethod = class_getInstanceMethod(self, @selector(initWithFrame:));
-        Method cd_Method = class_getInstanceMethod(self, @selector(cd_initWithFrame:));
-        method_exchangeImplementations(sysMethod, cd_Method);
+        Method dw_Method = class_getInstanceMethod(self, @selector(dw_initWithFrame:));
+        method_exchangeImplementations(sysMethod, dw_Method);
     });
 }
 
-- (id)cd_initWithFrame:(CGRect)frame {
-    UIView *view = [self cd_initWithFrame:frame];
+- (id)dw_initWithFrame:(CGRect)frame {
+    UIView *view = [self dw_initWithFrame:frame];
     [self loadView];
     return view;
 }

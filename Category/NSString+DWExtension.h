@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSString (Extension)
+@interface NSString (DWExtension)
 
 /** 是否为手机号 */
 @property(nonatomic, assign, readonly) BOOL isMobNumber;

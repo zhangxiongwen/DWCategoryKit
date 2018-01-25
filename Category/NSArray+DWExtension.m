@@ -6,7 +6,7 @@
 //  Copyright © 2017年 happyEsayBuy. All rights reserved.
 //
 
-#import "NSArray+Extension.h"
+#import "NSArray+DWExtension.h"
 #import <objc/runtime.h>
 
 @implementation NSArray (Extension)
@@ -15,17 +15,17 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Method sysMethod = class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(objectAtIndex:));
-        Method myMethod = class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(my_objectAtIndex:));
-        method_exchangeImplementations(sysMethod, myMethod);
+        Method dw_Method = class_getInstanceMethod(objc_getClass("__NSArrayI"), @selector(dw_objectAtIndex:));
+        method_exchangeImplementations(sysMethod, dw_Method);
     });
 }
 
-- (id)my_objectAtIndex:(NSInteger)idx {
+- (id)dw_objectAtIndex:(NSInteger)idx {
     if (idx >= self.count) {
         NSAssert(NO, @"不可变数组越界");
         return nil;
     }
-    return [self my_objectAtIndex:idx];
+    return [self dw_objectAtIndex:idx];
 }
 
 @end

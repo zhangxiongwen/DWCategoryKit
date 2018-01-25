@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (Extension)
+@interface NSArray (DWExtension)
 
 @end
