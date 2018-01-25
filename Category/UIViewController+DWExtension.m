@@ -30,6 +30,7 @@ static const char *DWBaseViewKey = "dw_baseViewKey";
     self.baseView.alwaysBounceVertical = YES;
     self.baseView.scrollEnabled = NO;
     [self.view addSubview:self.baseView];
+    [self.view sendSubviewToBack:self.baseView];
     [self setUI];
 }
 
