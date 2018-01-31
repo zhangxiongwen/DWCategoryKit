@@ -10,7 +10,7 @@
 
 @implementation NSDate (DWExtension)
 
-+ (NSString *)currentTimeWithFormat:(NSString *)format {
++ (NSString *)dateCurrentTimeWithFormat:(NSString *)format {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
     NSDate *datenow = [NSDate date];
@@ -18,7 +18,7 @@
     return currentTimeString;
 }
 
-+ (NSString *)timeStamp:(NSString *)timeStamp withFormat:(NSString *)format {
++ (NSString *)dateTimeStamp:(NSString *)timeStamp withFormat:(NSString *)format {
     NSTimeInterval time = [timeStamp doubleValue];
     NSDate *detaildate = [NSDate dateWithTimeIntervalSince1970:time];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

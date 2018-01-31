@@ -13,4 +13,7 @@
 /** 使用baseView替换系统view */
 @property(nonatomic, strong) UIScrollView *baseView;
 
+/** 设置导航栏透明 */
+@property(nonatomic, assign, getter=isNavigationBarTransparent) BOOL navigationBarTransparent;
+
 @end

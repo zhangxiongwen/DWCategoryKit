@@ -36,10 +36,13 @@
 /** 随机颜色 */
 #define UIRandomColor UIColorWithRGBA(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
-/** weakSelf */
+/** 获取iOS版本号 */
+#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+/** weakOBJ */
 #define weakOBJ(obj)  __weak typeof(obj) weak_##obj = obj;
 
-/** strongSelf */
+/** strongOBJ */
 #define strongOBJ(obj)  __strong typeof(obj) strong_##obj = weak##obj;
 
 

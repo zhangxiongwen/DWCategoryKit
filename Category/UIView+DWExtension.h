@@ -16,4 +16,17 @@
 /** 截图某个view的某块区域 */
 - (UIImage *)shotViewWithScope:(CGRect)scope;
 
+/** 绘制虚线
+ *
+ @  @param   lineFrame 虚线的 frame
+ *  @param   length 虚线中短线的宽度
+ *  @param   spacing 虚线中短线之间的间距
+ *  @param   color  虚线中短线的颜色
+ *
+ */
++ (UIView *)createDashedLineWithFrame:(CGRect)lineFrame
+                           lineLength:(int)length
+                          lineSpacing:(int)spacing
+                            lineColor:(UIColor *)color;
+
 @end

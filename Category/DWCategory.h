@@ -31,6 +31,8 @@
 
 #import "UIViewController+DWExtension.h"
 
+#import "NSArray+Log.h"
+
 #endif
 
 #endif /* DWCategory_h */

@@ -8,8 +8,15 @@
 
 #import "UIViewController+DWExtension.h"
 #import <objc/runtime.h>
+#import "UINavigationController+DWExtension.h"
 
 static const char *DWBaseViewKey = "dw_baseViewKey";
+static BOOL _dwNavigationBarTransparent = NO;
+
+@interface UIViewController ()<UIGestureRecognizerDelegate>
+
+@end
+
 @implementation UIViewController (DWExtension)
 
 + (void)load {
@@ -23,6 +30,12 @@ static const char *DWBaseViewKey = "dw_baseViewKey";
 
 - (void)dw_viewDidLoad {
     [self dw_viewDidLoad];
+    UINavigationController *navController = (UINavigationController *)self.navigationController;
+    if ([navController screenEdgePanGestureRecognizer]) {
+        [self.baseView.panGestureRecognizer requireGestureRecognizerToFail:[navController screenEdgePanGestureRecognizer]];
+    }
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     self.baseView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     self.baseView.backgroundColor = self.view.backgroundColor;
     self.baseView.showsHorizontalScrollIndicator = NO;
@@ -38,11 +51,23 @@ static const char *DWBaseViewKey = "dw_baseViewKey";
 }
 
 - (void)setBaseView:(UIScrollView *)baseView {
-    objc_setAssociatedObject([UIScrollView class], DWBaseViewKey, baseView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(UIScrollView.class, DWBaseViewKey, baseView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (UIScrollView *)baseView {
-    return objc_getAssociatedObject([UIScrollView class], DWBaseViewKey);
+    return objc_getAssociatedObject(UIScrollView.class, DWBaseViewKey);
 }
+
+- (void)setNavigationBarTransparent:(BOOL)navigationBarTransparent {
+    _dwNavigationBarTransparent  = navigationBarTransparent;
+    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController.navigationBar setTranslucent:YES];
+    [self.navigationController.navigationBar setBackgroundImage:navigationBarTransparent?[UIImage imageWithContentsOfFile:[[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Resources.bundle/navigationBartransparent"]]:nil forBarMetrics:UIBarMetricsDefault];
+}
+
+- (BOOL)isNavigationBarTransparent {
+    return _dwNavigationBarTransparent;
+}
+
 
 @end

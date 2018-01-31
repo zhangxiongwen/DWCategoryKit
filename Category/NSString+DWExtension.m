@@ -8,7 +8,7 @@
 
 #import "NSString+DWExtension.h"
 #import <UIKit/UIKit.h>
-#import <AESCrypt.h>
+#import "AESCrypt.h"
 #import <CommonCrypto/CommonDigest.h>
 
 static NSString *const kAESPassword = @"NSString+Extension&CoderDwang";
