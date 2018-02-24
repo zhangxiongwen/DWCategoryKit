@@ -18,6 +18,7 @@ static NSString *const kAESPassword = @"NSString+Extension&CoderDwang";
 @dynamic isUrllink;
 @dynamic isIDCard;
 @dynamic isEMail;
+@dynamic isEmpty;
 @dynamic encryptAESString;
 @dynamic decryptAESString;
 @dynamic encryptBase64String;
@@ -66,6 +67,24 @@ static NSString *const kAESPassword = @"NSString+Extension&CoderDwang";
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
     return [emailTest evaluateWithObject:self];
+}
+
+- (BOOL)isEmpty {
+    if (!self) {
+        return YES;
+    }
+    if ([self isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if (!self.length) {
+        return YES;
+    }
+    NSCharacterSet *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString *trimmedStr = [self stringByTrimmingCharactersInSet:set];
+    if (!trimmedStr.length) {
+        return YES;
+    }
+    return NO;
 }
 
 - (NSString *)encryptAESString {

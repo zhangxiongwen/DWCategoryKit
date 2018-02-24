@@ -14,9 +14,9 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Method sysMethod = class_getInstanceMethod(self, @selector(pushViewController:animated:));
+        Method sys_Method = class_getInstanceMethod(self, @selector(pushViewController:animated:));
         Method dw_Method = class_getInstanceMethod(self, @selector(dw_pushViewController:animated:));
-        method_exchangeImplementations(sysMethod, dw_Method);
+        method_exchangeImplementations(sys_Method, dw_Method);
     });
 }
 

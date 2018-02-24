@@ -37,9 +37,9 @@
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Method sysMethod = class_getInstanceMethod(self, @selector(reloadData));
+        Method sys_Method = class_getInstanceMethod(self, @selector(reloadData));
         Method dw_Method = class_getInstanceMethod(self, @selector(dw_reloadData));
-        method_exchangeImplementations(sysMethod, dw_Method);
+        method_exchangeImplementations(sys_Method, dw_Method);
         Method sys_init = class_getInstanceMethod(self, @selector(initWithFrame:style:));
         Method dw_init = class_getInstanceMethod(self, @selector(dw_initWithFrame:style:));
         method_exchangeImplementations(sys_init, dw_init);

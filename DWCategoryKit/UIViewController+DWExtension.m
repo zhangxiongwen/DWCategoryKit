@@ -23,9 +23,9 @@ static BOOL _dwHasBaseView = YES;
 + (void)load {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        Method sysMethod = class_getInstanceMethod(self, @selector(viewDidLoad));
+        Method sys_Method = class_getInstanceMethod(self, @selector(viewDidLoad));
         Method dw_Method = class_getInstanceMethod(self, @selector(dw_viewDidLoad));
-        method_exchangeImplementations(sysMethod, dw_Method);
+        method_exchangeImplementations(sys_Method, dw_Method);
     });
 }
 

@@ -15,15 +15,6 @@
 /** NSUserDefaults */
 #define UserDefaults [NSUserDefaults standardUserDefaults]
 
-/** 设置图片 */
-#define UIImageName(imgName) [UIImage imageNamed:imgName]
-
-/** 设置字体尺寸 */
-#define UIFontSizeMake(fontSize) [UIFont systemFontOfSize:fontSize]
-
-/** 设置字体及字体尺寸 */
-#define UIFontMakeNameWithSize(fontName, fontSize) [UIFont fontWithName:fontName size:fontSize]
-
 /** 获取iOS版本号 */
 #define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
@@ -33,6 +24,15 @@
 /** strongOBJ */
 #define strongOBJ(obj)  __strong typeof(obj) strong_##obj = weak##obj;
 
+#import "Property.h"
+
+#import "Color.h"
+
+#import "Frame.h"
+
+#import "Font.h"
+
+#import "Image.h"
 
 #ifdef DEBUG
 #define NSLog( s, ... ) NSLog( @"\n[所在方法:%s]\n[所在行数:%d]\n[打印内容:%@]", __func__, __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__])

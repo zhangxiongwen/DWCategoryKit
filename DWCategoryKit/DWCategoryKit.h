@@ -23,12 +23,6 @@
 
 #import "NSDate+DWExtension.h"
 
-#import "DWOUTPUT.h"
-
-#import "Property.h"
-
-#import "Color.h"
-
 #import "UIView+DWExtension.h"
 
 #import "UIImage+DWExtenison.h"
@@ -42,6 +36,9 @@
 #import "AESCrypt.h"
 
 #import "NSArray+Log.h"
+
+/** 输出文件 */
+#import "DWOUTPUT.h"
 
 #endif
 

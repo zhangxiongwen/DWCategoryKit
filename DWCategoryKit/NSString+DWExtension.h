@@ -22,6 +22,9 @@
 /** 是否为邮箱地址 */
 @property(nonatomic, assign, readonly) BOOL isEMail;
 
+/** 是否为空 */
+@property(nonatomic, assign, readonly) BOOL isEmpty;
+
 /** 拨打电话 */
 @property(nonatomic, assign) BOOL callPhone;
 
