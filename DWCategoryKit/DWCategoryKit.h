@@ -6,8 +6,8 @@
 //  Copyright © 2017年 CoderDwang. All rights reserved.
 //
 
-#ifndef DWCategory_h
-#define DWCategory_h
+#ifndef DWCategoryKit_h
+#define DWCategoryKit_h
 
 #ifdef __OBJC__
 
