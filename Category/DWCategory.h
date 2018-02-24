@@ -25,6 +25,10 @@
 
 #import "DWOUTPUT.h"
 
+#import "Property.h"
+
+#import "Color.h"
+
 #import "UIView+DWExtension.h"
 
 #import "UIImage+DWExtenison.h"
