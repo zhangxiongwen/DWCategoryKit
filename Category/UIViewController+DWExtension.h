@@ -10,6 +10,9 @@
 
 @interface UIViewController (DWExtension)
 
+/** 是否使用baseView */
+@property(nonatomic, assign, getter=isHasBaseView) BOOL hasBaseView;
+
 /** 使用baseView替换系统view */
 @property(nonatomic, strong) UIScrollView *baseView;
 
@@ -17,3 +20,4 @@
 @property(nonatomic, assign, getter=isNavigationBarTransparent) BOOL navigationBarTransparent;
 
 @end
+

@@ -12,6 +12,7 @@
 
 static const char *DWBaseViewKey = "dw_baseViewKey";
 static BOOL _dwNavigationBarTransparent = NO;
+static BOOL _dwHasBaseView = YES;
 
 @interface UIViewController ()<UIGestureRecognizerDelegate>
 
@@ -47,7 +48,7 @@ static BOOL _dwNavigationBarTransparent = NO;
     [self setUI];
 }
 
-- (void)setUI {    
+- (void)setUI {
 }
 
 - (void)setBaseView:(UIScrollView *)baseView {
@@ -69,5 +70,16 @@ static BOOL _dwNavigationBarTransparent = NO;
     return _dwNavigationBarTransparent;
 }
 
+- (void)setHasBaseView:(BOOL)hasBaseView {
+    _dwHasBaseView = hasBaseView;
+    if (!hasBaseView) {
+        [self.baseView removeFromSuperview];
+    }
+}
+
+- (BOOL)isHasBaseView {
+    return _dwHasBaseView;
+}
 
 @end
+

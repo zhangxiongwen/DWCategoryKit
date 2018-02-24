@@ -31,6 +31,12 @@
 
 #import "UIViewController+DWExtension.h"
 
+#import "UIApplication+DWExtension.h"
+
+#import "NSString+Base64.h"
+
+#import "AESCrypt.h"
+
 #import "NSArray+Log.h"
 
 #endif
