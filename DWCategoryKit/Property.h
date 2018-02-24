@@ -22,10 +22,10 @@
 #define parx(type, name) @property(nonatomic, assign, readonly) type name
 
 /** weak */
-#define pwx(type, name) @property(nonatomic, weak) type name
+#define pwx(type, name) @property(nonatomic, weak) type *name
 
 /** weak and readonly */
-#define pwrx(type, name) @property(nonatomic, weak, readonly) type name
+#define pwrx(type, name) @property(nonatomic, weak, readonly) type *name
 
 /** strong */
 #define psx(type, name) @property(nonatomic, strong) type *name
