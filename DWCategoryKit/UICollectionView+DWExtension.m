@@ -40,20 +40,7 @@
         Method sys_Method = class_getInstanceMethod(self, @selector(reloadData));
         Method dw_Method = class_getInstanceMethod(self, @selector(dw_reloadData));
         method_exchangeImplementations(sys_Method, dw_Method);
-        Method sys_init = class_getInstanceMethod(self, @selector(initWithFrame:collectionViewLayout:));
-        Method dw_init = class_getInstanceMethod(self, @selector(dw_initWithFrame:collectionViewLayout:));
-        method_exchangeImplementations(sys_init, dw_init);
     });
-}
-
-- (id)dw_initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
-    UICollectionView *collectionView = [self dw_initWithFrame:frame collectionViewLayout:layout];
-    [self loadView];
-    return collectionView;
-}
-
-- (void)loadView {
-    
 }
 
 - (void)dw_reloadData {

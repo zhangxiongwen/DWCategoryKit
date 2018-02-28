@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "DWCategoryKit"
-  s.version      = "1.2"
+  s.version      = "1.2.1"
   s.summary      = "项目常用类别整理."
   s.description  = <<-DESC
   - 将项目中常用类别整理成型

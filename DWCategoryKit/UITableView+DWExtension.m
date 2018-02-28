@@ -40,20 +40,7 @@
         Method sys_Method = class_getInstanceMethod(self, @selector(reloadData));
         Method dw_Method = class_getInstanceMethod(self, @selector(dw_reloadData));
         method_exchangeImplementations(sys_Method, dw_Method);
-        Method sys_init = class_getInstanceMethod(self, @selector(initWithFrame:style:));
-        Method dw_init = class_getInstanceMethod(self, @selector(dw_initWithFrame:style:));
-        method_exchangeImplementations(sys_init, dw_init);
     });
-}
-
-- (id)dw_initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
-    UITableView *tableView = [self dw_initWithFrame:frame style:style];
-    [self loadView];
-    return tableView;
-}
-
-- (void)loadView {
-    
 }
 
 - (void)dw_reloadData {
