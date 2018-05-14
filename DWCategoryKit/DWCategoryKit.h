@@ -25,8 +25,6 @@
 
 #import "UIView+DWExtension.h"
 
-#import "UIImage+DWExtenison.h"
-
 #import "UIViewController+DWExtension.h"
 
 #import "UIApplication+DWExtension.h"
