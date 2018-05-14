@@ -129,7 +129,7 @@
         default:
             break;
     }
-    if (IOS_VERSION >= 9) {
+    if (iOS_SYSTEMVERSION >= 9) {
         return name;
     }
     return @"CIGaussianBlur";

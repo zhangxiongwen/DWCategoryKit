@@ -16,7 +16,7 @@
 #define UserDefaults [NSUserDefaults standardUserDefaults]
 
 /** 获取iOS版本号 */
-#define IOS_VERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+#define iOS_SYSTEMVERSION [[[UIDevice currentDevice] systemVersion] floatValue]
 
 #import "Color.h"
 
