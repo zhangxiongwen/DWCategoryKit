@@ -35,6 +35,12 @@
 
 #import "NSArray+Log.h"
 
+#import "UICollectionView+DWExtension.h"
+
+#import "UITableViewCell+DWExtension.h"
+
+#import "NSMutableAttributedString+DWExtension.h"
+
 /** 输出文件 */
 #import "DWOUTPUT.h"
 
